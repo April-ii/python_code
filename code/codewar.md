@@ -80,3 +80,14 @@ print("\b")
 2. ` end=','  ` 间隔符号
 3. `\b` 退格
 
+## 02
+
+```python
+n = int(input())
+def shortFact(x):
+    return 1 if x <= 1 else x * shortFact(x - 1)
+print(shortFact(n))
+```
+
+1. 迭代
+
