@@ -89,5 +89,5 @@ def shortFact(x):
 print(shortFact(n))
 ```
 
-1. 迭代
+1. 递归
 
