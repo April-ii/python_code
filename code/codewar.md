@@ -65,6 +65,30 @@ def reverse_words(text):
 
 1. `split(" ")` 出于严谨，其括号中的“　”不能省，否则容易出现意料之外的错误情况
 
+
+
+## 05
+
+```python
+def high_and_low(numbers):
+    num_list=[int(num) for num in numbers.split(" ")]
+    return "%d %d" % (max(num_list),min(num_list))
+```
+
+1. 在numbers（字符串）转换为list 之前，必须将每个num变成int 类型。否则，max、min函数对字符进行比较，最小的可能是空格
+
+
+
+## 06
+
+```python
+def get_sum(a,b):
+    return sum(xrange(min(a,b), max(a,b)+1))
+```
+
+1. sum也太便捷了...
+2. `xrange()` 函数用法与`range()` 完全相同，所不同的是生成的不是一个数组，而是一个生成器。所以，尽量用`xrange()` , 可以避免浪费空间
+
 # python 100
 
 ## 01
