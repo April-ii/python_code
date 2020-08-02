@@ -87,7 +87,7 @@ def get_sum(a,b):
 ```
 
 1. sum也太便捷了...
-2. `xrange()` 函数用法与`range()` 完全相同，所不同的是生成的不是一个数组，而是一个生成器。所以，尽量用`xrange()` , 可以避免浪费空间
+2. `xrange()` 函数用法与`range()` 完全相同，所不同的是生成的不是一个数组，而是一个生成器。但是`xrange`只在`python2.0+`版本中存在
 
 # python 100
 
@@ -113,5 +113,14 @@ def shortFact(x):
 print(shortFact(n))
 ```
 
-1. 递归
+1. 递归（自己写不来系列......
+
+## 03
+
+```python
+n=int(input())
+print(num_dict={num:num**2 for num in range(1,n+1)})
+```
+
+最精妙的写法了...我什么时候才能自己写出这样的代码呢（叹气.jpg
 
