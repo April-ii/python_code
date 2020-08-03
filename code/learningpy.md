@@ -469,3 +469,28 @@ xusanduo.fire()
 
 ### 私有属性和私有方法
 
+```python
+class Women:
+    def __init__(self,name):
+        self.name=name
+        self.__age=18
+
+    def secret(self):
+        print("%s 的年龄是 %d" % (self.name,self.__age))
+
+xiaofang=Women("小芳")
+
+# 程序会报错，因为私有属性在外界不能够被直接访问 
+print(xiaofang.__age)
+# 在对象的方法内部，是可以访问对象私有属性的
+xiaofang.secret()
+
+# 私有方法同理 def __secret(self):
+```
+
+科普(伪私有属性、伪私有方法)：
+
+​		python 中，并没有真正意义上的私有。在给属性、方法命名时，实际上是对名称做了一些特殊处理，使得外界无法访问到
+​		处理方式：在名称前面加上` _类名 => _类名__名称`
+提示：在日常开发中，不要使用这种方法，访问对象的私有属性或私有方法
+
