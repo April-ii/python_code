@@ -31,7 +31,7 @@ def filter_list(l):
 ```
 
 1. `isinstance(object, classinfo)` ,判断一个对象是否是一个已知的类型
-2. 注意此处，返回一个list时的格式
+2. 注意此处，返回一个list时的格式。所以要用一个[ ]。
 
 ## 03
 
@@ -89,6 +89,15 @@ def get_sum(a,b):
 1. sum也太便捷了...
 2. `xrange()` 函数用法与`range()` 完全相同，所不同的是生成的不是一个数组，而是一个生成器。但是`xrange`只在`python2.0+`版本中存在
 
+## 07
+
+```python
+def oddOrEven(arr):
+    return 'even' if sum(arr) % 2 == 0 else 'odd'
+```
+
+好好学习一下，return 里面同时有if 和 while
+
 # python 100
 
 ## 01
@@ -123,4 +132,25 @@ print(num_dict={num:num**2 for num in range(1,n+1)})
 ```
 
 最精妙的写法了...我什么时候才能自己写出这样的代码呢（叹气.jpg
+
+## 04
+
+```python
+class IOstring:
+    def __init__(self):
+        pass
+
+    def get_string(self):
+        self.s = input()
+
+    def print_string(self):
+        print(self.s.upper())
+
+xx = IOstring()
+xx.get_string()
+xx.print_string()
+```
+
+1. `str.upper()` 将字符串的小写字母改成大写字母
+2. 原来 input() 也可以加在方法里面 
 
