@@ -354,7 +354,7 @@ print(xiaoming)
 1. 在对象的方法内部，是可以直接访问对象的属性的
 2. 同一个类创建的多个对象，其属性之间互不干扰
 
-## 案例2—摆放家具
+### 案例2—摆放家具
 
 ```python
 class HouseItem:
@@ -379,7 +379,11 @@ class House:
                    self.free_area,self.item_list))
     
     def add_item(self,item):
-        print("要添加%s" % item)
+        if item.area>self.free_area:
+            print("%s 的面积太大了，无法添加" % item.name)
+        else:
+            self.item_list.append("%s" % item.name)
+            self.free_area-=item.area
 
 # 创建家具
 bed=HouseItem("席梦思",4)
@@ -398,3 +402,70 @@ print(my_home)
 ```
 
 1. 先定义家具类，再定义房子类。原因是房子类中的方法“添加家具”，需要调用家具类的对象
+
+
+
+### 案例3 士兵突击(身份运算符)
+
+一个对象的属性可以是另一个类创建的对象
+
+```python
+class Gun:
+    def __init__(self,model):
+        # 1.model of gun
+        self.model=model
+
+        # 2.number of bullet
+        self.bullet_account=0
+
+    def add_bullet(self,count):
+        self.bullet_account+=count
+    
+    def shoot(self):
+        # 1.judging number of bullet
+        if self.bullet_account<=0:
+            print("[%s] was out of bullet" % self.model)
+            return
+        # 2.fire a bullet
+        self.bullet_account-=1
+        # 3.prompt transmitting message
+        print("[%s] tututu.. [%d] bullet left" 
+             % (self.model,self.bullet_account))
+
+ak47 = Gun("AK47")
+
+class Soldier:
+    # 定义属性时，不知道设置什么初始值，可以设置为None.
+    # None 表示一个空对象，没有方法和属性，是一个特殊常量，可以将None赋值给任何一个变量
+    def __init__(self,name):
+        self.name=name
+        self.gun=None
+    def fire(self):
+        # 1.judging having gun or not
+        if self.gun is None:
+            print("[%s] 还没有枪..." % self.name)
+            return
+        # 2.shouting
+        print("Go! [%s]" % self.name)
+        # 3.gun adds bullet
+        self.gun.add_bullet(10)
+        # 4.gun fires
+        self.gun.shoot()
+xusanduo=Soldier("许三多")
+xusanduo.gun=ak47
+xusanduo.fire()
+
+```
+
+1. python中的身份运算符： 
+
+   is：判断两个标识符是不是引用同一个对象， x is y,类似id(x)==id(y)
+
+   同理， is not
+
+2. is 与== 区别：“==” 表示两个变量的值相等
+
+
+
+### 私有属性和私有方法
+
