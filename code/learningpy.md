@@ -263,6 +263,8 @@ sum_number(3)
 
 ## 面向对象
 
+	### 1. 封装：根据职责将属性和方法封装到一个抽象的类中
+
 1. class 后面跟着的（类名）必须用驼峰命名法
 
 ```python
@@ -493,4 +495,66 @@ xiaofang.secret()
 ​		python 中，并没有真正意义上的私有。在给属性、方法命名时，实际上是对名称做了一些特殊处理，使得外界无法访问到
 ​		处理方式：在名称前面加上` _类名 => _类名__名称`
 提示：在日常开发中，不要使用这种方法，访问对象的私有属性或私有方法
+
+### 2. 继承：实现代码的重用，相同的代码不需要重复的编写
+
+1. 子类拥有父类的所有方法和属性 `class son(father)` 
+
+   ```python
+   class Animal:
+       def eat(self)：
+       	print("我会吃")
+   class Dog(Animal):
+       def bark(self):
+           print("我会飞")
+   ```
+
+   2. 父类方法不能满足子类需求时，可以对方法进行重写：
+
+      （1）覆盖父类的方法：在子类中定义一个和父类同名的方法并且实现，重写之后，只会调用子类中重写的方法
+
+      （2）对父类的方法进行扩展：使用super().    调用原本在父类中的方法
+
+      ```python
+      class Animal:
+          def eat(self)：
+          	print("我会吃")
+          
+      class Dog(Animal):
+          def bark(self):
+              print("汪汪汪...")
+          
+      class XiaoTianQuan:
+          print("叫得跟神一样")
+          super().bark()  # 调用原本在父类中封装的方法
+          # 在python 2.0+版本中 `Dog.bark(self)` 来调用
+          print("@#$%^&&^%$#$*...")
+      ```
+
+   3. 父类的私有属性和私有方法：
+
+      （1）子类不能在自己的方法内部，直接访问父类的私有属性或者私有方法
+
+      （2）子类可以通过父类的公有方法间接访问到私有属性或私有方法
+
+      ```python
+      class Father:
+          def __init__(self):
+              __num=200
+          def __test(self):
+              print("secret")
+          def test(self):
+              print("%d" % __num)
+              self.__test()
+      
+      class Son(Father):
+          self.test()
+          
+      ```
+
+      
+
+### 3. 多态：不同的对象调用相同的方法，产生不同的执行结果，增加代码的灵活度
+
+
 
