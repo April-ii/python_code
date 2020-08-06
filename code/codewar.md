@@ -98,6 +98,54 @@ def oddOrEven(arr):
 
 好好学习一下，return 里面同时有if 和 while
 
+## 08
+
+```python
+def solve(s):
+    return s.upper() if sum(map(str.isupper, s)) * 2 > len(s) else s.lower()
+```
+
+当比较一个word里面大小写字母数量时候，可以借鉴的思路
+
+## 09
+
+优化后的代码
+
+```python
+def valid_parentheses(string):
+    count = 0
+    for i in string:
+        if i == "(":
+            count += 1
+        elif i == ")":
+            count -= 1
+        if count < 0:
+            return False
+    return count == 0
+```
+
+我的代码
+
+```python
+# Valid Parentheses
+def valid_parentheses(s):
+    p_left=0
+    p_right=0
+    for p in list(s):
+        if p=="(":
+            p_left+=1
+        elif p==")":
+            p_right+=1
+        if p_left<p_right:
+            break
+    if p_right==p_left: 
+        return True
+    else:
+        return False
+```
+
+逻辑上大体相同，但别人只有了一个count，通过加减来比较，变量更少，利用空间更小
+
 # python 100
 
 ## 01
