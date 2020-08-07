@@ -146,6 +146,29 @@ def valid_parentheses(s):
 
 逻辑上大体相同，但别人只有了一个count，通过加减来比较，变量更少，利用空间更小
 
+## 10
+
+```python
+def title_case(title, minor_words=''):
+    title=title.capitalize().split(" ") # 先将第一个单词的首字母大写
+    # capitalize() 的作用是将字符串的首字母大写,并且其他字母全部小写
+    minor_words=minor_words.lower().split(" ")
+    # 将传入的exception 全部小写
+
+    final_list=[]
+    for word in title:
+        if word not in minor_words:
+            word=word.capitalize()
+        final_list.append(word)
+    return " ".join(final_list)
+
+```
+
+1. 没有认真审题。将第二个参数强改为列表，解释器出现错误
+2. 思量再三。最后return 结果时，新建一个list，会比直接join\if\else\for\in 用在一行更美观易懂
+
+
+
 # python 100
 
 ## 01
