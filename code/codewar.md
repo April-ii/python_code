@@ -167,7 +167,37 @@ def title_case(title, minor_words=''):
 1. 没有认真审题。将第二个参数强改为列表，解释器出现错误
 2. 思量再三。最后return 结果时，新建一个list，会比直接join\if\else\for\in 用在一行更美观易懂
 
+## 11
 
+```python
+def iq_test(numbers):
+    list_judge=[int(num)%2 for num in numbers.split(" ")]
+    return (list_judge.index(0) if list_judge.count(0)==1 
+            else list_judge.index(1))+1
+```
+
+1. spotlight: 将奇数偶数全部变成0\1 list
+2. 学习到了 `list.count()` 的用法
+
+## 12
+
+```python
+def solution(roman):
+    d={'I':1, 'V':5 ,'X':10, 'L':50 ,'C':100, 'D':500,'M':1000}
+    
+    return reduce(lambda x,y: x+y if x>=y else y-x , (d[c] for c in roman))
+```
+
+1. `lambda` 可以接收任意数量的参数，但只能有一个表达式
+
+   ```python
+   x=lambda a,b: a*b
+   print(x(5,6)) # 30
+   ```
+
+2. `reduce(function,iterable[,initializer]])` : 用传给 reduce 中的函数 function（有两个参数）先对集合中的第 1、2 个元素进行操作，得到的结果再与第三个数据用 function 函数运算，最后得到一个结果。
+
+   python3中必须用`from functools import reduce` 
 
 # python 100
 
