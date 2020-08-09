@@ -524,7 +524,7 @@ xiaofang.secret()
           def bark(self):
               print("汪汪汪...")
           
-      class XiaoTianQuan:
+      class XiaoTianQuan(Dog):
           print("叫得跟神一样")
           super().bark()  # 调用原本在父类中封装的方法
           # 在python 2.0+版本中 `Dog.bark(self)` 来调用
@@ -552,9 +552,57 @@ xiaofang.secret()
           
       ```
 
-      
 
-### 3. 多态：不同的对象调用相同的方法，产生不同的执行结果，增加代码的灵活度
+### 多继承：子类可以拥有多个父类，并且具有所有父类的属性和方法
+
+```python
+class 子类(父类1，父类2)：
+	pass  
+```
+
+### python 中的`__mro__ `---方法搜索顺序
+
+`print(C.__mro__)`  ，主要用于在多继承时，判断方法、属性的调用路径
+
+### 新式类和旧式类
+
+为了保证代码能够同时在`python2.x` 和`python 3.x`  中运行，今后在定义类时，如果没有父类，建议统一继承自`object`
+
+### 3. 多态：不同的子类对象调用相同父类的方法，产生不同的执行结果
+
+```python
+class Dog(object):
+    def __init__(self,name):
+        self.name=name
+
+    def game(self):
+        print("play")
+
+class XiaoTianQuan(Dog):
+    def game(self):
+        print("play to sky")
+
+class Person(object):
+    def __init__(self,name):
+        self.name=name
+    
+    def game_with_dog(self,dog):
+        print("%s and %s play" % (self.name,dog.name))
+        # 这里的dog是形参
+        dog.game()
+
+wangcai=Dog("旺财")
+# wangcai=XiaoTianQuan("wangcai")
+xiaoming=Person("小明")
+# 让小明调用和狗玩的方法
+xiaoming.game_with_dog(wangcai)
+```
+
+
+
+
+
+
 
 
 
