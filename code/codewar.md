@@ -177,7 +177,18 @@ def iq_test(numbers):
 ```
 
 1. spotlight: 将奇数偶数全部变成0\1 list
+
 2. 学习到了 `list.count()` 的用法
+
+   ```python
+   # 注意这个例子
+   string="recede"
+   for ch in list(string):
+       print(list(string).count(ch))
+   # 打印结果为 1 3 1 2 1 1
+   ```
+
+   
 
 ## 12
 
@@ -198,6 +209,17 @@ def solution(roman):
 2. `reduce(function,iterable[,initializer]])` : 用传给 reduce 中的函数 function（有两个参数）先对集合中的第 1、2 个元素进行操作，得到的结果再与第三个数据用 function 函数运算，最后得到一个结果。
 
    python3中必须用`from functools import reduce` 
+
+
+
+## 13
+
+```python
+def duplicate_encode(word):
+    return "".join(["(" if word.count(c)==1 else ")" for c in list(word.lower())])
+```
+
+1. `str.count()` 和 `list.count()` 在`for` 循环中有区别，详情请对比11
 
 # python 100
 
