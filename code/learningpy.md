@@ -600,6 +600,53 @@ xiaoming.game_with_dog(wangcai)
 
 
 
+## 类属性
+
+给类对象中定义的属性，类属性不会用于记录具体对象的特征
+
+```python
+class Tool(object):
+    # 使用赋值语句定义类属性，记录所有工具对象的数量
+    count=0
+    def __init__(self,name):
+        self.name=name # 实例属性
+        # 让类属性的值+1
+        Tool.count+=1
+# 调用类属性用类名.类属性。否则破坏封装性
+```
+
+
+
+## 类方法
+
+类方法需要用修饰器`@classmethond` 来标识，告诉解释器这是一个类方法
+
+```python
+@classsmethod
+def 类方法名(cls):
+    pass
+```
+
+EXAMPLE
+
+```python
+class Tool(object):
+    count=0
+    
+    @classmethod
+    def show_tool_count(cls):
+        print("%d" % cls.count)
+    
+    def __init__(self,name):
+        self.name=name
+        Tool.count+=1
+
+# 创建对象
+tool1=Tool("斧头")
+# 调用类方法
+Tool.show_tool_count()
+```
+
 
 
 
