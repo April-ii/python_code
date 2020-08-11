@@ -238,11 +238,37 @@ def anagrams(word, words):
 
 
 
-## 15
+## 15*
+
+寻找最大子序列和
+
+思路1
 
 ```python
-
+def maxSequence(arr):
+    maxl = 0
+    maxg = 0
+    for n in arr:
+        maxl = max(0, maxl + n)
+        maxg = max(maxg, maxl)
+    return maxg
 ```
+
+1. 最开始将子序列起点设为第一个数字。在子序列和成为负数之前，可求该子序列的最大和并保存为max。成为负数后，直接从最后一个负数之后那个数字作为起点，以此类推
+
+思路2
+
+```python
+def maxSequence(arr):
+    lowest = ans = total = 0
+    for i in arr:
+        total += i
+        lowest = min(lowest, total)
+        ans = max(ans, total - lowest)
+    return ans
+```
+
+1. 通过起点从第一个数开始的子序列和减去和最小的子序列，从而得到和最大的子序列
 
 
 
