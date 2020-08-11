@@ -221,6 +221,31 @@ def duplicate_encode(word):
 
 1. `str.count()` 和 `list.count()` 在`for` 循环中有区别，详情请对比11
 
+
+
+## 14
+
+```python
+def anagrams(word, words):
+    return [item for item in words if 	sorted(word)==sorted(item)]
+```
+
+1. 学习思路：通过排序更简便的比较两个单词所包含的字母是不是相同
+
+2. `sorted()` 函数：`sorted(iterable, key=None, reverse=False) `
+
+   补充：sort 与 sorted 的区别在于，sort 只能用于 list, 而sorted 可以用于任意可迭代对象
+
+
+
+## 15
+
+```python
+
+```
+
+
+
 # python 100
 
 ## 01
