@@ -272,7 +272,7 @@ def maxSequence(arr):
 
 思路3：我的笨方法，找出分别以数列中每个数字为起点的序列中的最大和
 
-## 16
+## 16*
 
 ```python
 def sum_pairs(ints, s):
@@ -308,6 +308,49 @@ def domain_name(url):
 
 1. 原来`split()`括号中的字符不存在于字符串的时候不会报错
 2. 多个`split()` 连用
+
+## 18
+
+```python
+def make_readable(seconds):
+    hours, seconds = divmod(seconds, 60 ** 2)
+    minutes, seconds = divmod(seconds, 60)
+    return '{:02}:{:02}:{:02}'.format(hours, minutes, seconds)
+```
+
+1. `divmod(a,b)` 返回 `(a//b,a%b)`
+
+2. `format`函数，基本语法是通过 `{}` 和` :` 来代替以前的 `%` 。
+
+   `format` 函数可以接受不限个参数，位置可以不按顺序。
+
+   ```python
+   class AssignValue(object):
+       def __init__(self, value):
+           self.value = value
+   my_value = AssignValue(6)
+   print('value 为: {0.value}'.format(my_value)) # "0" 是可选的
+   
+   my_list = ['菜鸟教程', 'www.runoob.com']
+   print("网站名：{0[0]}, 地址 {0[1]}".format(my_list))
+   print("网站名：{my_list[0]}, 地址 {my_list[1]}".format(my_list=my_list))
+   # "0" 是必须的
+   ```
+
+   
+
+## 19*
+
+```python
+def who_is_next(names, r):
+    while r > len(names):
+        r = (r - len(names) + 1) // 2
+    return names[r-1]
+```
+
+
+
+## 
 
 
 
