@@ -270,6 +270,45 @@ def maxSequence(arr):
 
 1. 通过起点从第一个数开始的子序列和减去和最小的子序列，从而得到和最大的子序列
 
+思路3：我的笨方法，找出分别以数列中每个数字为起点的序列中的最大和
+
+## 16
+
+```python
+def sum_pairs(ints, s):
+    new_set=set()
+    for num in ints:
+        if s-num in new_set:
+            return [s-num,num]
+        new_set.add(num)
+```
+
+1. 思路：对`list` 的每一个`num`进行遍历，如果`s-num`在`new_set` 里面直接`return`，如果不在，则把`num`装进去，看看能不能作为后面的`num`的`s-num`
+
+2. `set()`函数创建一个无序不重复元素集，可进行关系测试，删除重复数据，还可以计算交集、差集、并集等。
+
+   ```python
+   x=set([1,2,3,3])
+   y=set([3,3,3,1])
+   x & y # 交集
+   x | y # 并集
+   x - y # 差集
+   ```
+
+3. `set.add(element)` 
+
+4. 当没有return出口的时候，`python` 返回`None`
+
+## 17
+
+```python
+def domain_name(url):
+    return url.split("//")[-1].split("www.")[-1].split(".")[0]
+```
+
+1. 原来`split()`括号中的字符不存在于字符串的时候不会报错
+2. 多个`split()` 连用
+
 
 
 # python 100
