@@ -350,7 +350,15 @@ def who_is_next(names, r):
 
 
 
-## 
+## 20(学完面向对象回看此题)
+
+```python
+# codewar Function Addition
+```
+
+
+
+
 
 
 
@@ -409,4 +417,49 @@ xx.print_string()
 
 1. `str.upper()` 将字符串的小写字母改成大写字母
 2. 原来 input() 也可以加在方法里面 
+
+# Leetcode
+
+## 01
+
+思路1：从连着的括号对开始逐一删除，如果最后s为空，则True，or False
+
+```python
+class Solution:
+    def isValid(self, s: str) -> bool:
+        while not s:
+            if "()" or "[]" or "{}" in s:
+                s.replce("()","")
+                s.replce("[]","")
+                s.replce("{}","")
+        return len(s)==0
+```
+
+思路2：当遇到每个左括号时，储存其对应的右括号于list中，如果从后面的s 中不能   **按序**  一一对应，则False, or True
+
+```python
+class Solution:
+    def isValid(self,s):
+        stack = []
+        map = {
+            "{":"}",
+            "[":"]",
+            "(":")"
+        }
+        for x in s:
+            if x in map:
+              stack.append(map[x])
+            else:
+                if len(stack)!=0:
+                top_element = stack.pop()
+                # 让top等于末尾数据后，再删去末尾数据
+                    if x != top_element:
+                        return False
+                    else:
+                        continue
+                else:
+                    return False
+        return len(stack) == 0
+    	# 当判断到最后一对括号也正确时从这个出口返回
+```
 
