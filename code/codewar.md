@@ -427,11 +427,10 @@ xx.print_string()
 ```python
 class Solution:
     def isValid(self, s: str) -> bool:
-        while not s:
-            if "()" or "[]" or "{}" in s:
-                s.replce("()","")
-                s.replce("[]","")
-                s.replce("{}","")
+        while ("()" in s) or ("[]" in s) or ("{}" in s):
+                s.replace("()","")
+                s.replace("[]","")
+                s.replace("{}","")
         return len(s)==0
 ```
 
