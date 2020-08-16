@@ -420,7 +420,7 @@ xx.print_string()
 
 # Leetcode
 
-## 01
+## 01 寻找括号对
 
 思路1：从连着的括号对开始逐一删除，如果最后s为空，则True，or False
 
@@ -462,3 +462,60 @@ class Solution:
     	# 当判断到最后一对括号也正确时从这个出口返回
 ```
 
+## 02 733图像渲染
+
+```python
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
+        originColor=image[sr][sc]
+        if originColor==newColor:
+            return image
+        m,n=len(image),len(image[0])
+        quenue=[(sr,sc)]
+        DIR=[(0,1),(0,-1),(-1,0),(1,0)]
+        # 当遍历DIR时，可以让点改变上下左右改变位置
+        while queue:
+            position=queue.pop()
+            # 当用完该数据就删除，与while条件相对应
+            image[position[0]][position[1]]=newColor
+            for direct in DIR:
+                x=position[0]+direct[0]
+                y=position[1]+direct[1]
+                if x>=0 and x<m and y>=0 and y<n:
+                    if image[x][y]==originColor:
+                        queue.append([x,y])
+                        # 与pop操作相对应
+        return image
+```
+
+spotlight: 运用了queue和DIR
+
+## 03 1507 Reformat Date
+
+```python
+class Solution:
+    def reformatDate(self, date: str) -> str:
+        day, month, year = date.split(' ')
+        MonthDict = {"Jan":"01", "Feb":"02", "Mar":"03", "Apr":"04", "May":"05", "Jun":"06", "Jul":"07", "Aug":"08", "Sep":"09", "Oct":"10", "Nov":"11", "Dec":"12"}
+        month = MonthDict[month]
+        day = day[:2] if day[1].isdigit() else '0' + str(day[0])
+        return '-'.join([year,month,day])
+```
+
+常规题，主要学习写法
+
+## 04 1337 The K Weakest Rows in a Matrix
+
+```python
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        num_list=[]
+        for i in range(0,len(mat)):
+            num_list.append((i,sum(mat[i])))
+        num_list=sorted(num_list,key=lambda x:(x[1],x[0]))
+        # 表示先按元组第二个数排序，相同的再按第一个排序
+        return [n[0] for n in num_list[:k]]
+    	# 打印每个元组的第一个数字
+```
+
+用list装元组，每个元组`(i，j)`表示第`i`行，和为`j`。然后再排序，用一个`for` 循环来`return`
