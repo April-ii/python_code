@@ -41,7 +41,7 @@ def toJadenCase(NonJadenStrings):
     return string.capwords(NonJadenStrings)
 ```
 
-1. `string.capwords `In Python, `string capwords()`method is used to capitalize all the words in the string using `split()` method.
+1. `string.capwords ` In Python, `string capwords()`method is used to capitalize all the words in the string using `split()` method.
 2. **Syntax:** `string.capwords(string, sep=None)`
    **Return Value:** `Returns a formatted string after above operations.` e
 3. `sep`意思为seperate ,用于自定义间隔符
