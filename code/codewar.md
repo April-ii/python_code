@@ -523,3 +523,32 @@ class Solution:
 ## 05 1260. Shift 2D Grid
 
 二维数字网格迁移，观察到可以通过展开成一维数组逐个往后迁移，再将最后一个元素通过list切片和相加的方法合成一个新的一维数组。再用一次循环，对新的一维数组切片，装入新的二维数组
+
+## 06 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
+
+```python
+class Solution:
+    def isPrefixOfWord(self, sentence, searchWord):
+        for num, word in enumerate(sentence.split(), 1):
+            if word.startswith(searchWord):
+                return num
+        return -1
+```
+
+1. `enumerate() `函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。
+
+   `enumerate(sequence, [start=0])` start用于设置第一个下标的数字，默认为0
+
+2. `str.startswith(str, beg=0,end=len(string))` bed & end 用于指定搜索范围即字符串检索的起始和终止位置。
+
+
+
+## 07 面试题 16.07. Maximum LCCI
+
+```python
+class Solution:
+    def maximum(self, a: int, b: int) -> int:
+        return int(((a + b) + abs(a - b)) / 2)
+```
+
+从该题中学习了，`max(a,b)` 的本质是补齐a、b之间的相对距离
