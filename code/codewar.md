@@ -552,3 +552,8 @@ class Solution:
 ```
 
 从该题中学习了，`max(a,b)` 的本质是补齐a、b之间的相对距离
+
+## 08 面试题 16.11. Diving Board LCCI
+
+排列组合问题，考虑总排列数为0，或者两个组合数相同的情况，剩下的就是`range` ，从全是较小数到全是最大数，间隔为 `longer-shorter`
+
