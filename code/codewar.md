@@ -557,3 +557,47 @@ class Solution:
 
 排列组合问题，考虑总排列数为0，或者两个组合数相同的情况，剩下的就是`range` ，从全是较小数到全是最大数，间隔为 `longer-shorter`
 
+## 09 面试题 16.15. Master Mind LCCI
+
+```python
+class Solution:
+    def masterMind(self,solution,guess):
+        a = b = 0
+        index = []
+        count_s = collections.Counter()
+        for i in range(4):
+            if solution[i] == guess[i]:
+                a += 1
+            else:
+                index.append(i)
+                count_s[solution[i]] += 1
+                # 空Counter可以直接进行初始化，这点与list不同
+        
+        for i in index:
+            if count_s[guess[i]] > 0:
+                count_s[guess[i]] -= 1
+                b += 1
+                
+        return [a, b] 
+```
+
+1. Counter计数器用法:对传入的对象进行计数
+
+   ```python
+   import collections
+   # 可以建立一个空counter
+   c=collections.Counter()
+   # 创建的时候传进去一个迭代器（数组，字符串，字典等）
+   c=collections.Counter("frank")
+   c=collections.Counter({"red":0,"green":1})
+   c=collections.Counter(cat=4,dog=1) #传入参数，cat相当于一个对象，4代表个数
+   
+   c=collections.Counter(a=2,b=2)
+   sorted(c.elements())
+   # print['a','a','b','b']
+   #elements()在元素上返回一个迭代器，as many times as its count
+   ```
+
+2. 思路总结：
+
+   分别对猜中和伪猜中用两个变量进行记录。当不是猜中的时候，有可能是猜错或者伪猜中，此时用list记录非猜中时候的索引数，并且把solutions里面的元素分类且计数。然后对非猜中的元素，通过索引数进行遍历，如果该元素在Counter里的计数不为0，则符合一次伪猜中，记录一次伪猜中的同时，删除一次该元素对应的Counter
