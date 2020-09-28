@@ -635,3 +635,35 @@ f(n)=f(n-1)+f(n-2)。设一个元组（a,b），在range(n-1)循环中，顺着�
 ## 14 7. 整数反转
 
 方法就是字符串反转直接`s[::-1]`,但是有两种特殊情况，一种是负数，所以一开始就`abs()`取绝对值，如果是负数，最后加负号。另一种情况是0开头，最后有一个`int()`正好可以解决这个问题。
+
+## 1175. 质数排列
+
+```python
+class Solution:
+    def numPrimeArrangements(self, n):
+        if n == 1:
+            return 1
+        def factorial(x):
+            if x <= 1:
+                return x
+            else:
+                return x*factorial(x-1)
+        # 这个函数的作用就是得到x！
+        A = [1]
+        # 因为此题只看质数的排列，所以只要把1和合数看成非质数混合排列就可以了
+        B = []
+        for i in range(2, n+1): #即对[2,n]区间进行遍历
+            k = 0
+            for j in range(2, i): #对于每个i,看[2,i-1]中有无它的因数,
+                if i % j == 0:
+                    k += 1
+            if k >= 1:
+                A.append(i) #listA是合数
+            else:
+                B.append(i) #listB是质数
+        return (factorial(len(A)) * factorial(len(B)) % (10**9 + 7))
+        # 相当于是质数与合数各自排列组合。并且是有序的排列组合Amm和Ann
+
+```
+
+思路：按照题目要求，质数必须是在质数索引上，那么可以想象把质数和非质数（这里指的是1和合数）分离开，各自排列，则分別是有序排列Ann。这里可以记住阶乘的函数，日后常用到的。
