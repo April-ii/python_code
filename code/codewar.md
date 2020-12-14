@@ -667,3 +667,43 @@ class Solution:
 ```
 
 思路：按照题目要求，质数必须是在质数索引上，那么可以想象把质数和非质数（这里指的是1和合数）分离开，各自排列，则分別是有序排列Ann。这里可以记住阶乘的函数，日后常用到的。
+
+## 面试题63. 股票的最大利润
+
+```python
+""" 假设把某股票的价格按照时间先后顺序存储在数组中，
+请问买卖该股票一次可能获得的最大利润是多少？ """
+""" 输入: [7,1,5,3,6,4]
+输出: 5 """
+
+#动态规划
+class Solution:
+    def maxProfit(self, prices):
+        minimum,profit=float("inf"),0
+        for price in prices:
+            minimum=min(minimum,price)
+            profit=max(profit,price-minimum)
+
+        return profit
+
+c=Solution()
+max_=c.maxProfit([7,1,5,3,6,4])
+print(max_)
+```
+
+思路： 记住最新算出的值，在下一个轮回中，比较与新的值的大小，再存储其中更大的一个
+
+## 49. 字母异位词分组
+
+```python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        d=collections.defaultdict(list)
+        for s in strs:
+            d["".join(sorted(s))].append(s)
+        
+        return list(d.values())
+# defaultdict创建了dict的一个子类，例：[('A',[1,2],('B',[2]))]
+#  "".join(sorted(s))将unhashable list转化成了字符串
+```
+
