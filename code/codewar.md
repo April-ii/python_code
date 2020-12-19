@@ -707,3 +707,20 @@ class Solution:
 #  "".join(sorted(s))将unhashable list转化成了字符串
 ```
 
+
+
+## 48. 旋转图像
+
+```python
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        matrix[:]=[list(i)[::-1] for i in zip(*matrix)]
+        return matrix
+#如果是matrix=new_matrix,就是前面指向后面的地址
+#如上相当于是逐个赋值
+#zip()返回的一般是对象，需要手动list，加上*表示将tuple压成list，否则就是元组构成的列表
+```
+
