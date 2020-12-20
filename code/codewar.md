@@ -724,3 +724,22 @@ class Solution:
 #zip()返回的一般是对象，需要手动list，加上*表示将tuple压成list，否则就是元组构成的列表
 ```
 
+
+
+## 316. 去除重复字母
+
+```python
+class Solution:
+    def removeDuplicateLetters(self, s: str) -> str:
+        stack=[] #新列表用于储存结果
+        for idx,char in enumerate(s):
+            if char in stack: continue
+            while stack and char < stack[-1] and stack[-1] in s[idx:]:       
+                stack.pop()
+      #精髓所在，在这个循环中，相当于对按字典序做了个排序，太聪明了吧呜呜
+            stack.append(char)
+
+        return "".join(stack)
+#绝妙呜呜，甘拜下风
+```
+
