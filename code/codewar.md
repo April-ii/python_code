@@ -743,3 +743,19 @@ class Solution:
 #绝妙呜呜，甘拜下风
 ```
 
+
+
+## 628.三个数的最大乘积
+
+```python
+class Solution:
+    def maximumProduct(self, nums: List[int]) -> int:
+        nums=sorted(nums)
+        return max(reduce(lambda x,y:x*y,nums[-3:]),
+                    reduce(lambda x,y:x*y,nums[:3]),
+                    reduce(lambda x,y:x*y,nums[-2:]+nums[:1]),
+                    reduce(lambda x,y:x*y,nums[:2]+nums[-1:]))
+```
+
+1. 熟悉reduce的用法
+2. 发现列表相加时候，如果只有一个元素只能用切片，而不是用索引单独取出这个数字，即 i 和 [ i ] 的区别
