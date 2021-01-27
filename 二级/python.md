@@ -120,9 +120,137 @@ import random
 broadlist=['三星','vivo','魅族','苹果','OPPO']
 random.seed(0)
 name=broadlist[random.randint(0,4)]
-#Q：radint里面的参数是啥意思捏
+#radint里面的参数是指随机数的区间范围
 print(name)
 ```
 
 ### 42
+
+```python
+import jieba
+s=input("请输入一个字符串：")
+m=len(s)
+n=len(jieba.lcut(s))
+print("中文字符数为{},中文词语数为{}".format(m,n))
+```
+
+### 43
+
+```python
+num=eval(input("请输入件数："))
+#input()输入的是str,eval返回的是值
+if num==1:
+    cost=150
+elif num>=2 and num<=3:
+    cost=int(0.9*150*num)
+elif num>=4 and num<=9:
+    cost=int(0.8*150*num)
+else:
+    cost=int(0.7*150*num)
+print("总额为：",cost)
+```
+
+### 44
+
+```python
+import turtle 
+for i in range(5):
+    turtle.fd(200)
+    turtle.right(144)
+```
+
+
+
+### 45
+
+```python
+fo=open("PY.txt","w")
+data=input("请输入一组人员的姓名、性别、年龄：")
+woman_num=0
+age_num=0
+person_num=0
+while data:
+    name,sex,age=data.split(" ")
+    if sex=='女':
+        woman_num+=1
+    age_num+=int(age)
+    person_num+=1
+    data=input("请输入一组人员的姓名、性别、年龄：")
+average_age=age_num/person_num
+fo.write("平均年龄是{},女性人数{}".
+         format(average_age,woman_num))
+fo.close()
+```
+
+### 46(1)
+
+```python
+fi=open("festival.csv",'r')
+ls=[]
+for line in fi:
+    ls.append(line.strip("\n").split(","))
+    #strip移除字符串头尾指定的字符序列。返回移除字符串头尾指定的字符生成的新字符串
+fi.close()
+print(ls)
+i=input("请输入节日名称：")
+for line in ls:
+    if line[1]==i:
+        print("{}的日期是{}-{}".
+              format(line[1],line[2],line[3]))
+```
+
+### 46(2)
+
+```python
+fi=open("festival.csv",'r')
+ls=[]
+for line in fi:
+    ls.append(line.strip("\n").split(","))
+    #strip移除字符串头尾指定的字符序列。返回移除字符串头尾指定的字符生成的新字符串
+fi.close()
+nums=input("请输入节日序号：").split(" ")
+while True:
+    for line in ls:
+        for num in nums:
+            if line[0]==num:
+                print("{}{}的假期是{}月{}日到{}月{}日之间".
+                format(line[1],line[0],line[2][:2],
+                line[2][-2:],line[3][:2],line[3][-2:]))
+    nums=input("请输入节日序号：").split(" ")
+```
+
+### 46(3)
+
+```python
+fi=open("festival.csv",'r')
+ls=[]
+for line in fi:
+    ls.append(line.strip("\n").split(","))
+    #strip移除字符串头尾指定的字符序列。返回移除字符串头尾指定的字符生成的新字符串
+fi.close()
+nums=input("请输入节日序号：").split(" ")
+while True:
+    for num in nums:
+        if int(num)>4:
+            print("输入的序号不合理！")
+        for line in ls:
+            if line[0]==num:
+                print("{}{}的假期是{}月{}日到{}月{}日之间".
+                format(line[1],line[0],line[2][:2],
+                line[2][-2:],line[3][:2],line[3][-2:]))
+    nums=input("请输入节日序号：").split(" ")
+```
+
+
+
+## 第三套
+
+### 41
+
+```python
+n=eval(input("请输入正整数"))
+print("{0:@>30,}".format(n))
+```
+
+
 
