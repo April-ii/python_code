@@ -252,5 +252,18 @@ n=eval(input("请输入正整数"))
 print("{0:@>30,}".format(n))
 ```
 
+### 45
 
+```python
+import collections
+fi=open("PY.txt",'w')
+ls=collections.Counter(input("请输入职业：").split(" "))
+ls=dict(ls)
+print(ls)
+print(ls.items())
+ls=sorted(ls.items(),key=lambda x:x[1],reverse=True)
+for elem in ls:
+    fi.write("{}:{}".format(elem[0],elem[1]))
+fi.close()
+```
 
