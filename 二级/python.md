@@ -259,11 +259,105 @@ import collections
 fi=open("PY.txt",'w')
 ls=collections.Counter(input("请输入职业：").split(" "))
 ls=dict(ls)
-print(ls)
-print(ls.items())
 ls=sorted(ls.items(),key=lambda x:x[1],reverse=True)
 for elem in ls:
     fi.write("{}:{}".format(elem[0],elem[1]))
 fi.close()
+```
+
+### 46(1)
+
+```python
+fi=open("PY.txt",'r')
+fo=open("PY2.txt",'w')
+flag=False
+for line in fi:
+    if '【' in line:
+        flag=False
+    if '【原文】' in line:
+        flag=True
+        continue
+    if flag==True:
+        fo.write(line.lstrip())
+fi.close()
+fo.close()
+```
+
+### 46(2)
+
+```python
+fi=open("PY.txt",'r')
+fo=open("PY2.txt",'w')
+for line in fi:
+    for i in range(1,23):
+        # 分析文本可知共1~22种可能
+        line=line.replace("({})".format(i),"")
+        fo.write(line)
+fi.close()
+fo.close()
+```
+
+## 第四套
+
+### 41
+
+```python
+nums=input("请输入四位数字：")
+nls=nums.split(" ")
+# 不一定是整数，所以不用int
+# 但eval一般只用在字符串转数值上
+x0=eval(nls[0])
+y0=eval(nls[1])
+x1=eval(nls[2])
+y1=eval(nls[2])
+print(pow(pow(x1-x0,2)+pow(y1-y0,2),0.5))
+```
+
+### 42
+
+```python
+import jieba
+txt=input()
+ls=jieba.lcut(txt)
+print("{:.1f}".format(len(txt)/len(ls)))
+```
+
+### 43
+
+```python
+n=eval(input("请输入一个数字："))
+print("{:+^11}".format(chr(n-1)+chr(n)+chr(n+1)))
+```
+
+### 45
+
+```python
+fi=open("PY.txt",'w')
+d={}
+sum=0
+score=input().split(" ")
+while score[0]!='':
+    d[score[0]]=score[1]
+    sum+=eval(score[1])
+    score=input().split(" ")
+ls=sorted(d.items())
+maxi=ls[len(ls)-1][1]
+mini=ls[0][1]
+fi.write("最高分是{}，最低分是{}，平均分是{:.2f}".
+         format(maxi,mini,sum/len(ls)))
+fi.close()
+```
+
+## 第五套
+
+### 41
+
+```python
+n=eval(input("请输入一个数字："))
+ls=[0]
+# 为了让ls[1]对应第一个字母而非第二个
+for i in range(65,91):   #A-Z对应的Unicode
+    ls.append(chr(i))
+print("输出的字母是:",ls[n])
 ```
 
