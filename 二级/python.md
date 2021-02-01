@@ -361,3 +361,14 @@ for i in range(65,91):   #A-Z对应的Unicode
 print("输出的字母是:",ls[n])
 ```
 
+### 42
+
+```python
+s=input("请输入一个数字：")
+num=int(s)
+print("{:b}".format(num))
+#十进制数字转化为二进制数字
+```
+
+### 43
+
