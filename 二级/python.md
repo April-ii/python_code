@@ -370,5 +370,115 @@ print("{:b}".format(num))
 #十进制数字转化为二进制数字
 ```
 
+### 44
+
+```python
+import turtle
+turtle.color("red","yellow")
+# 等同于pencolor(red)、fillcolor("yellow")
+turtle.begin_fill()
+for i in range(36):
+    turtle.fd(200)
+    turtle,turtle.left(170)
+turtle.end_fill()
+#画太阳花，每个尖锐角为10度
+```
+
+### 45
+
+```python
+fo=open("PY.txt",'w')
+def isPrime(num):
+    for i in range(2,num):
+        #num=2是i取不到任何值
+        if num%i==0:
+            return False
+    return True
+
+ls=[51,33,54,56,67,88,431,111,141,72,45,2,78,13,15,5,69]
+lis=[]
+for i in ls:
+    if not isPrime(i):
+        lis.append(i)
+fo.write("{},列表的长度{}".format(lis,len(lis)))
+fo.close()
+```
+
+## 第六套
+
+### 41
+
+```python
+line="After fresh rain in moutains bare"
+print(line.title())
+```
+
 ### 43
+
+```python
+num=eval(input("请输入数字："))
+print("对应二进制数：{0:b}\n 八进制数：{0:o}\n 大写的十六进制数：{0:X}\n".format(num))
+```
+
+### 44
+
+```python
+import turtle
+turtle.color("black","yellow")
+turtle.begin_fill()
+turtle.circle(50)
+turtle.end_fill()
+```
+
+## 第七套
+
+### 41
+
+```python
+lis=[2,8,3,6,5,8,3]
+new_lis=list(set(lis))
+print(new_lis)
+```
+
+### 43
+
+```python
+def reverse_str(string):
+    return string[::-1]
+string='goodstudy'
+print(reverse_str(string))
+```
+
+### 44
+
+```python
+import turtle
+turtle.color("black","yellow")
+turtle.begin_fill()
+for i in range(5):
+    turtle.fd(200)
+    turtle.right(144)
+turtle.end_fill()
+#呜呜我运行出来五角星中间那块五边形是白色的
+```
+
+### 45
+
+```python
+na=eval(input("第一个整数："))
+nb=eval(input("第二个整数："))
+a=min(na,nb)
+b=max(na,nb)
+ls=[]
+for i in range(a+1,b):
+    for j in range(2,i):
+        if i%j==0:
+            break
+            #跳出这一整个内层循环
+    else:
+        ls.append(i)
+    #for else语句的else是指在正常执行了循环内部语句时执行
+    #也就是没有遇到任何的break使循环终止
+print(ls)
+```
 
