@@ -348,6 +348,60 @@ fi.write("最高分是{}，最低分是{}，平均分是{:.2f}".
 fi.close()
 ```
 
+### 46(1)
+
+```python
+fi=open("sensor.txt",'r')
+fo=open("PY2.txt",'w')
+txt=fi.readlines()
+for line in txt:
+    ls=line.strip("\n").split(",")
+    if ' earpa001' in ls:
+        #debug的时候发现转为list之后，品牌名前有个空格
+       fo.write("{},{},{},{}\n".
+                format(ls[0],ls[1],ls[2],ls[3]))
+fi.close()
+fo.close()
+```
+
+### 46(2)
+
+```python
+from collections import Counter
+# 这里第三方库不晓得能不能用哦
+fi=open("PY2.txt",'r')
+fo=open("PY.txt",'w')
+txt=fi.readlines()
+lis=[]
+for line in txt:
+    ls=line.strip("\n").split(",")
+    lis.append("{}-{}".format(ls[2],ls[3]))
+d=dict(Counter(lis))
+lis=list(d.items())
+for i in range(len(lis)):
+    fo.write("{},{}\n".format(lis[i][0],lis[i][1]))
+fi.close()
+fo.close()
+```
+
+```python
+fi=open("PY2.txt",'r')
+fo=open("PY.txt",'w')
+txt=fi.readlines()
+d={}
+for line in txt:
+    ls=line.strip("\n").split(",")
+    data=ls[-2]+"-"+ls[-1]
+    d[data]=d.get(data,0)+1
+lis=list(d.items())
+for i in range(len(lis)):
+    fo.write("{},{}\n".format(lis[i][0],lis[i][1]))
+fi.close()
+fo.close()
+```
+
+
+
 ## 第五套
 
 ### 41
@@ -404,6 +458,44 @@ fo.write("{},列表的长度{}".format(lis,len(lis)))
 fo.close()
 ```
 
+### 46(1)
+
+```python
+fi=open("arrogant.txt",'r')
+fo=open("PY2.txt",'w')
+txt=fi.read()
+d={}
+for s in txt:
+    #统计的是英文字符数，而不是英文单词数
+    d[s]=d.get(s,0)+1
+del d['\n']
+ls=list(d.items())
+for i in range(len(ls)):
+    fo.write("{}:{}\n".format(ls[i][0],ls[i][1]))
+fi.close()
+fo.close()
+```
+
+### 46(2)
+
+```python
+fi=open("arrogant.txt",'r')
+fo=open("PY2.txt",'w')
+txt=fi.read()
+d={}
+for s in txt:
+    d[s]=d.get(s,0)+1
+del d['\n']
+ls=list(d.items())
+ls=sorted(ls,key=lambda x:x[1],reverse=True)
+for i in range(10):
+    fo.write("{}:{}\n".format(ls[i][0],ls[i][1]))
+fi.close()
+fo.close()
+```
+
+
+
 ## 第六套
 
 ### 41
@@ -429,6 +521,29 @@ turtle.begin_fill()
 turtle.circle(50)
 turtle.end_fill()
 ```
+
+### 46
+
+```python
+fi=open("score.csv",'r')
+fo=open("PY.txt",'w')
+ls=[]
+avg=[]
+sum=0
+avg_score=0
+for s in fi:
+    ls.append(s.strip("\n").split(","))
+for line in ls[1:]:
+    sum=0
+    for i in line[1:]:
+        sum+=int(i)
+        avg_score=sum/3
+    fo.write("{}:{:.2f}\n".format(line[0],avg_score))
+fi.close()
+fo.close()
+```
+
+
 
 ## 第七套
 
@@ -480,5 +595,120 @@ for i in range(a+1,b):
     #for else语句的else是指在正常执行了循环内部语句时执行
     #也就是没有遇到任何的break使循环终止
 print(ls)
+```
+
+### 46(1)
+
+```python
+fo=open("PY2.txt",'w')
+class Horse:
+    def __init__(self,category,gender,age):
+        self.age=age
+        self.category=category
+        self.gender=gender
+        self.horse_speed=0
+    def get_descriptive(self):
+        info=("the category is:{},the gender is:{},the age is:{}\n".format(self.category,self.gender,self.age))
+        fo.write(info)
+    def update_speed(self,new_speed):
+        self.horse_speed=new_speed
+        fo.write("the new speed is "+str(self.horse_speed))
+        #注意数值类型转化为字符类型
+
+horse=Horse("Arab","male","12")
+horse.get_descriptive()
+horse.update_speed(50)
+fo.close()
+```
+
+### 46(2)
+
+```python
+fo=open("PY2.txt",'w')
+class Horse:
+    def __init__(self,category,gender,age):
+        self.age=age
+        self.category=category
+        self.gender=gender
+        self.horse_speed=0
+    def get_descriptive(self):
+        info="the category is:{},the gender is:{},the age is:{}\n".format(self.category,self.gender,self.age)
+        fo.write(info)
+    def update_speed(self,new_speed):
+        self.horse_speed=new_speed
+        fo.write("the new speed is {}.".format(self.horse_speed))
+
+class Camel(Horse):
+    #Camel是Horse的子类
+    def __init__(self, category, gender, age, hump):
+        super().__init__(category, gender, age)
+        self.hump_size=hump
+    def describe_hump_size(self):
+        fo.write("this camel has {} humps.".format(self.hump_size))
+
+
+camel=Camel("Double Hump","female","20","4")
+camel.get_descriptive()
+camel.update_speed(40)
+camel.describe_hump_size()
+```
+
+## 第八套
+
+### 41
+
+```python
+animals=["duck","hen","monkey","cat"]
+animals.reverse()
+print(animals)
+# 逆序输出
+```
+
+### 42
+
+```python
+s="   shisjwdeifhref      "
+print(s.strip())
+```
+
+### 44
+
+```python
+import turtle
+# 画四叶草
+for i in range(4):
+    turtle.seth(90*(i+1))
+    turtle.circle(50,90)
+    turtle.seth(90*(i-1))
+    turtle.circle(50,90)
+turtle.hideturtle()
+# 绘制复杂图形时，隐藏海龟可以加快绘图速度
+```
+
+### 45
+
+```python
+import math
+# 异常处理结构
+try:
+    a=eval(input("请输入底数："))
+    b=eval(input("请输入真数："))
+    c=math.log(b,a)
+except ValueError:
+    #传入无效参数
+    if a<=0 and b>0:
+        print("底数不能小于0")
+    elif b<=0 and a>0:
+        print("真数不能小于0")
+    elif a<=0 and b<=0:
+        print("真数和底数都不能小于等于0")
+except ZeroDivisionError:
+    #除零
+    print("底数不能为1")
+except NameError:
+    #未声明/初始化对象
+    print("底数必须为实数")
+else:
+    print(c)
 ```
 
