@@ -712,3 +712,66 @@ else:
     print(c)
 ```
 
+## 第九套
+
+### 41
+
+```python
+import calendar
+year=eval(input("请输入年份："))
+table=calendar.calendar(year)
+print(table)
+```
+
+### 42
+
+```python
+s=input("请输入绕口令：")
+print(s.replace("兵","将"))
+```
+
+### 44
+
+```python
+import turtle as tt
+def curvemove():
+    for i in range(200):
+        tt.right(1)
+        tt.forward(1)
+    
+tt.setup(600,600,400,400)
+tt.hideturtle()
+tt.pencolor("black") #笔的颜色
+tt.fillcolor("red") #填充色
+tt.pensize(2)
+tt.begin_fill()
+tt.left(140)
+tt.forward(111.65)
+curvemove()
+tt.left(120)
+curvemove()
+tt.forward(111.65)
+tt.end_fill()
+tt.penup()
+tt.goto(-27,85)
+tt.pendown()
+tt.done()
+```
+
+### 45
+
+```python
+for i in range(1,10):
+    for j in range(i):
+        print("{}*{}={}".format(j+1,i,i*(j+1)),end=" ")
+    print("\n")
+```
+
+## 第十套
+
+### 41
+
+```python
+
+```
+
