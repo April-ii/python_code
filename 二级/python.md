@@ -769,9 +769,177 @@ for i in range(1,10):
 
 ## 第十套
 
+### 43
+
+```python
+import time
+t=time.localtime()
+print(time.strftime("%Y年%m月%d日%H时%M分%S秒",t))
+```
+
+### 44
+
+```python
+for i in range(4):
+    for y in range(4-i):
+        print(" ",end="")
+    print("* "*i)
+
+for i in range(4):
+    for y in range(i):
+        print(" ",end="")
+    print("* "*(4-i))
+# 用*画一个实心菱形
+```
+
+### 45
+
+```python
+import turtle as tt
+tt.pensize(5)
+for i in range(6):
+    tt.fd(100)
+    tt.right(60)
+tt.color("red")
+tt.circle(60,steps=6)
+```
+
+## 第十一套
+
 ### 41
 
 ```python
+fi=open("poem.txt",'r')
+result=[]
+for line in fi.readlines():
+    line=line.strip()
+    if len(line)!=0 and line[0]!="#":
+        result.append(line)
+result.sort()
+for line in result:
+    print(line)
+fi.close()
+```
 
+### 42
+
+```python
+a=[]
+for i in range(8):
+    a.append([])
+    for j in range(8):
+        a[i].append(0)
+for i in range(8):
+    a[i][0]=1
+    a[i][i]=1
+for i in range(2,8):
+    for j in range(1,i):
+        a[i][j]=a[i-1][j-1]+a[i-1][j]
+for i in range(8):
+    for j in range(i+1):
+        print("{:3d}".format(a[i][j]),end=" ")
+    print()
+	#print("\n")的话每行之间会有空行
+```
+
+### 43
+
+```python
+def proc(strings):
+    m=0
+    ls=[]
+    for i in range(len(strings)):
+        if len(strings[i])>m:
+            m=len(strings[i])
+    for i in range(len(strings)):
+        if len(strings[i])==m:
+            ls.append(strings[i])
+    return ls
+
+strings=["cat","python","MATLAB","cad","hello","world"]
+result=proc(strings)
+print("The longest word are:")
+for word in result:
+    print("{:>25}".format(word))
+```
+
+### 44
+
+```python
+strings={'cad','PE','Windows','FM','hello','world','flowers'}
+n=0
+for word in strings:
+    if word.islower():
+        #islower判断是否小写
+        n+=1
+print(n)
+```
+
+### 45
+
+```python
+def proc(stu_list):
+    d={}
+    for item in stu_list:
+        r=item.split("_")
+        a,b=r[0],r[1].strip()
+        if a in d:
+            d[a]+=[b]
+        else:
+            d[a]=[b]
+    lst=sorted(d.items(),key=lambda d:len(d[1]),reverse=True)
+    return lst
+
+f=open("signup.txt","r")
+stu_list=f.readlines()
+result=proc(stu_list)
+for item in result:
+    print(item[0],'->',item[1])
+f.close()
+```
+
+## 第十二套
+
+### 41
+
+```python
+ls=input().split(",")
+for num in ls:
+    print("{:>10}".format(num),end="")
+```
+
+### 42
+
+```python
+scale=0.0001
+def calv(base,day):
+    val=base*pow(scale+1,day*11)
+    return val
+
+print("5年后的成就值是{}".format(int(calv(1,5*365))))
+year=1
+while calv(1,year*365)<100:
+    year+=1
+print("{}年后的成就值是100".format(year))
+```
+
+### 43
+
+```python
+while True:
+    try:
+        a=eval(input("请输入一个正整数："))
+        if a>0 and type(a)==int:
+            print(a)
+            break
+    except:
+        print("请输入一个正整数")
+```
+
+```python
+num=eval(input("请输入正整数："))
+while type(num)!=int or num<=0:
+    num=eval(input("请输入正整数："))
+print(num)
 ```
 
