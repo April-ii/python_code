@@ -943,3 +943,35 @@ while type(num)!=int or num<=0:
 print(num)
 ```
 
+### 44
+
+```python
+import turtle as tt
+ls=[69,292,33,131,61,254]
+X_len=400
+Y_len=300
+x0=-200
+y0=-100
+tt.penup()
+# 画笔抬起——移动时不画线
+tt.goto(x0,y0)
+# 将画笔移动到坐标为(x0,y0)的位置
+tt.pendown()
+tt.fd(X_len)
+tt.fd(-X_len)
+tt.seth(90)
+tt.fd(Y_len)
+tt.fd(-Y_len)
+tt.pencolor("red")
+tt.pensize(5)
+for i in range(len(ls)):
+    tt.penup()
+    tt.goto(x0+50*(1+i),-100)
+    tt.seth(90)
+    tt.pendown()
+    tt.fd(ls[i])
+tt.done()
+```
+
+
+
