@@ -712,6 +712,21 @@ else:
     print(c)
 ```
 
+### 46
+
+```python
+intxt=input("请输入明文：")
+for p in intxt:
+    if "a"<=p<="z":
+        print(chr(ord("a")+(ord(p)-ord("a")+3)%26),end="")
+    elif "A"<=p<="Z":
+        print(chr(ord("A")+(ord(p)-ord("A")+3)%26),end="")
+    else:
+        print(p,end="")
+```
+
+
+
 ## 第九套
 
 ### 41
@@ -767,6 +782,33 @@ for i in range(1,10):
     print("\n")
 ```
 
+### 46(1)
+
+```python
+fi=open("关山月.txt",'r')
+fo=open("PY.txt",'w')
+txt=fi.read()
+ls=txt.split("。")
+fo.write("。\n".join(ls))
+fi.close()
+fo.close()
+```
+
+### 46(2)
+
+```python
+fi=open("PY.txt",'r')
+fo=open("PY2.txt",'w')
+txt=fi.readlines()
+txt.reverse()
+for row in txt:
+    fo.write(row)
+fi.close()
+fo.close()
+```
+
+
+
 ## 第十套
 
 ### 43
@@ -802,6 +844,33 @@ for i in range(6):
     tt.right(60)
 tt.color("red")
 tt.circle(60,steps=6)
+```
+
+### 46
+
+```python
+import random
+letter_list=['a','b','c','d','e','f','g','h','i','j','k','l','m','n',
+            'o','p','q','r','s','t','u','v','w','x','y','z']
+letter=letter_list[random.randint(0,25)]
+cnt=0
+while True:
+    w=input("请输入一个小写英文字母：")
+    if w==letter:
+        print("回答正确")
+        break
+    elif w>letter:
+        print("太大了")
+        cnt+=1
+    elif w<letter:
+        print("太小了")
+        cnt+=1
+    elif cnt>=5:
+        print("游戏失败")
+        break
+    else:
+        print("未知错误")
+
 ```
 
 ## 第十一套
@@ -898,6 +967,17 @@ for item in result:
 f.close()
 ```
 
+### 46
+
+```python
+d={"yuanyuan":80,"taotao":90,"fangfang":100,"mama":98,"baba":60}
+ls=sorted(d.items(),key=lambda x:x[1],reverse=True)
+for i in range(3):
+    print("{}:{}".format(ls[i][0],ls[i][1]))
+```
+
+
+
 ## 第十二套
 
 ### 41
@@ -971,6 +1051,22 @@ for i in range(len(ls)):
     tt.pendown()
     tt.fd(ls[i])
 tt.done()
+```
+
+## 第十三套
+
+### 41
+
+```python
+ls=list(input("请输入一串字符"))
+n_cnt=0
+s_cnt=0
+for i in ls:
+    if i.isnumeric():
+        n_cnt+=1
+    elif i.isalpha():
+        s_cnt+=1
+print("数字的个数是{}，字母的个数是{}".format(n_cnt,s_cnt))
 ```
 
 
