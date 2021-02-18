@@ -1069,5 +1069,166 @@ for i in ls:
 print("数字的个数是{}，字母的个数是{}".format(n_cnt,s_cnt))
 ```
 
+### 42
 
+```python
+ls=list(input("请输入一串字符"))
+n_cnt=0
+s_cnt=0
+for i in ls:
+    if i.isnumeric():
+        n_cnt+=1
+    elif i.isalpha():
+        s_cnt+=1
+print("数字的个数是{}，字母的个数是{}".format(n_cnt,s_cnt))
+```
+
+### 44
+
+```python
+import turtle as tt
+import random as rr
+color=['red','orange','blue','green','purple']
+rr.seed(1)
+for i in range(5):
+    rad=rr.randint(20,50)
+    x0=rr.randint(-100,100)
+    y0=rr.randint(-100,100)
+    tt.color(rr.choice(color))
+    tt.penup()
+    tt.goto(x0,y0)
+    tt.pendown()
+    tt.circle(rad)
+tt.done()
+```
+
+### 45 未做
+
+还没做
+
+## 第十四套
+
+### 41
+
+```python
+num=eval(input("输入一个数字："))
+print("{:\"^30x}".format(num))
+```
+
+### 42
+
+```python
+n=input("请输入：")
+s="〇一二三四五六七八九"
+for c in "0123456789":
+    n=n.replace(c,s[eval(c)])
+print(n)
+```
+
+### 43
+
+```python
+a,b,c=[int(i) for i in input("请输入：").split(",")]
+res=[]
+for i in range(c):
+    res.append(str(a*(b**i)))
+print(",".join(res))
+```
+
+### 44
+
+```python
+import turtle as t
+t.pensize(2)
+for i in range(4):
+    t.fd(200)
+    t.left(90)
+t.seth(-45)
+t.circle(100*pow(2,0.5))
+```
+
+### 45
+
+```python
+while True:
+    s=input("请输入字符：")
+    for i in range(10):
+        if str(i) in s:
+            break
+    else:
+        print(len(s))
+        break
+```
+
+## 第十五套
+
+### 42
+
+```python
+a=[3,6,9]
+b=eval(input("请输入："))
+j=0
+for i in a:
+    b.insert(j,i)
+    # insert(index,element)
+    j+=2
+print(b)
+```
+
+### 45 未做
+
+## 第十六套
+
+### 41
+
+```python
+s=input("请输入数字：")
+sum=0
+for i in s:
+    sum+=int(i)
+print("{:=^25}".format(sum))
+```
+
+### 42
+
+```python
+s=input("请输入中文与字母的组合：")
+cnt=0
+for i in s:
+    if '\u4e00'<=i<='\u9fff':
+        cnt+=1
+print(cnt)
+```
+
+### 44
+
+```python
+import turtle
+import random
+points=[[0,0],[50,40],[70,80],[-40,30]]
+angles=6
+random.seed(1)
+turtle.pencolor('red')
+turtle.pensize(2)
+for i in range(4):
+    turtle.penup()
+    turtle.goto(points[i])
+    turtle.pendown()
+    length=random.randint(6,16)
+    for j in range(angles):
+        turtle.fd(length)
+        turtle.backward(length)
+        turtle.right(360/angles)
+turtle.done()
+```
+
+### 45 未做
+
+## 第十七套
+
+### 41
+
+```python
+
+```
 
