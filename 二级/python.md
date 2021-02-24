@@ -1053,6 +1053,48 @@ for i in range(len(ls)):
 tt.done()
 ```
 
+### 45
+
+```python
+import random
+random.seed(2)
+pdict={'Alice':['123456789'],'Bob':['263644885595'],'Lily':['34935647856']}
+name=input("请输入一个人名：")
+if name in pdict:
+    print("{} {} {}".
+    format(name,pdict[name][0],random.randint(1000,9999)))
+else:
+    print("您输入的用户不存在")
+```
+
+### 46(1)
+
+```python
+import jieba
+fi=open("data2019.txt",'r')
+datas=fi.read()
+data=jieba.lcut(datas)
+d={}
+for i in data:
+    if len(i)>=2:
+        d[i]=d.get(i,0)+1
+        
+ls=list(d.items())
+sorted(ls,key=lambda x:x[1],reverse=True)
+for i in range(9):
+    print("{}:{}".format(ls[i][0],ls[i][1]),end=',',sep='')
+print("{}:{}".format(ls[9][0],ls[9][1]))
+fi.close()
+```
+
+### 46(2)
+
+```python
+
+```
+
+
+
 ## 第十三套
 
 ### 41
@@ -1102,9 +1144,54 @@ for i in range(5):
 tt.done()
 ```
 
-### 45 未做
+### 45 
 
-还没做
+```python
+lt1=[0.69,0.292,0.33,0.131,0.61,0.254]
+lt2=[0.1,0.8,0.2]
+k=0
+for j in range(len(lt1)-2):
+    for i in range(len(lt2)):
+        k+=lt2[i]*lt1[j+i]
+        print("k={:>10.3f},lt2[{}]={:.3f},lt1[{}+{}]={:.3f}".format(k,i,lt2[i],j,i,lt1[i]))
+        #{:>10.3f}表示字符宽度为10，这样就把所有k值右对齐
+```
+
+### 46(1)
+
+```python
+fi=open("13data.txt",'r',encoding='utf-8')
+fo=open("clean.txt",'w')
+data=fi.read()
+s=""
+x='，。？！：；、“”‘’——'
+for i in data:
+    if i not in x:
+        s+=i
+fo.write(s)
+fi.close()
+fo.close()
+```
+
+### 46(2)
+
+```python
+import jieba
+fi=open("clean.txt",'r')
+data=fi.read()
+ls=jieba.lcut(data)
+d={}
+for word in ls:
+    if len(word)>=3:
+        d[word]=d.get(word,0)+1
+ls=list(d.items())
+ls=sorted(ls,key=lambda x:x[1],reverse=True)
+for i in range(9):
+    print("{}:{}".format(ls[i][0],ls[i][1]),end=',',sep='')
+print("{}:{}".format(ls[9][0],ls[9][1]),sep='')
+```
+
+
 
 ## 第十四套
 
@@ -1160,6 +1247,44 @@ while True:
         break
 ```
 
+### 46(1)
+
+```python
+fi=open("14data.txt",'r',encoding='gbk')
+fo=open("PY.txt",'w')
+l=[]
+lines=fi.readlines()
+for line in lines:
+    if 'alt=' in line:
+        begin=line.find('alt=')
+        end=line.find("\"",begin+5)
+        l.append(line[begin+5:end])
+for i in l:
+    print(i)
+```
+
+### 46(2)
+
+```python
+fo=open("PY.txt",'r')
+names=fo.readlines()
+dx,xy=0,0
+ls=[]
+for name in names:
+    name=name.strip('\n')
+    if ("大学" in name or "学院" in name) and "大学生" not in name:
+        ls.append(name)
+        if name[-2:]=="学院":
+            xy+=1
+        else:
+            dx+=1
+for i in ls:
+    print(i)
+print("大学的数量是{},学院的数量是{}".format(dx,xy))
+```
+
+
+
 ## 第十五套
 
 ### 42
@@ -1175,7 +1300,74 @@ for i in a:
 print(b)
 ```
 
-### 45 未做
+### 45 (1)
+
+```python
+fi=open("vote.txt",'r',encoding='gbk')
+names=fi.readlines()
+cnt=0
+for name in names:
+    num=len(name.split())
+    if num==1:
+        cnt+=1
+print("有效票的数量是{}".format(cnt))
+```
+
+### 45(2)
+
+```python
+fi=open("vote.txt",'r',encoding='gbk')
+names=fi.readlines()
+d={}
+for name in names:
+    name=name.strip("\n")
+    num=len(name.split())
+    if num==1:
+        d[name]=d.get(name,0)+1
+ls=list(d.items())
+ls=sorted(ls,key=lambda x:x[1],reverse=True)
+print("最具人气明星为{}，票数为{}".format(ls[0][0],ls[0][1]))
+
+```
+
+### 46(1)
+
+```python
+import jieba
+fi=open("15data.txt",'r',encoding='gbk')
+fo=open("PY.txt",'w')
+datas=fi.read()
+data=jieba.lcut(datas)
+ls=[]
+for d in data:
+    if len(d)>=3 and d not in ls:
+        fo.write(d+'\n')
+        ls.append(d)    
+fi.close()
+fo.close()
+```
+
+### 46(2)
+
+```python
+import jieba
+fi=open("15data.txt",'r',encoding='gbk')
+fo=open("PY2.txt",'w')
+datas=fi.read()
+data=jieba.lcut(datas)
+d={}
+for i in data:
+    if len(i)>=3:
+        d[i]=d.get(i,0)+1
+ls=list(d.items())
+ls=sorted(ls,key=lambda x:x[1],reverse=True)
+for item in ls:
+    fo.write("{}:{}".format(item[0],item[1])+'\n')      
+fi.close()
+fo.close()
+```
+
+
 
 ## 第十六套
 
@@ -1222,11 +1414,110 @@ for i in range(4):
 turtle.done()
 ```
 
-### 45 未做
+### 45 
+
+```python
+fi=open("16data.txt",'r',encoding='gbk')
+dic={}
+for line in fi:
+    # 如果是先read再循环就是逐字循环
+    ls=line.strip().split(",")
+    if len(ls)<3:
+       continue
+    dic[ls[-1]]=dic.get(ls[-1],[])+[ls[1]]
+unis=list(dic.items())
+for u in unis:
+    print("{}:{}:{}".format(u[0],len(u[1]),' '.join(u[1])))
+fi.close()
+```
+
+### 46
+
+```python
+import jieba
+fi=open("红楼梦.txt",'r',encoding='utf-8')
+fo=open("停用词.txt",'r',encoding='utf-8')
+datas=fi.read()
+words=fo.read()
+data=jieba.lcut(datas)
+d={}
+word=['一个','如今','一面','众人','说道','只见','不知','两个','二人','起来',
+'今日','听见','不敢','不能','东西','只得','心中','回来','几个','原来','进来',
+'出去','一时','银子','起身','答应','回去']
+for i in data:
+    if len(i)<2 or i in words or i in word:
+        continue
+    if i in ['凤姐','凤姐儿','凤丫头']:
+        i='凤姐'
+    if i in ['宝玉','二爷','宝二爷']:
+        i='宝玉'
+    if i in ['黛玉','颦儿','林妹妹','黛玉道']:
+        i='黛玉'
+    if i in ['宝钗','宝丫头']:
+        i='宝钗'
+    if i in ['贾母','老祖宗']:
+        i='贾母'
+    if i in ['袭人','袭人道']:
+        i='袭人'
+    if i in ['贾政','贾政道']:
+        i='贾政'
+    if i in ['贾琏','琏二爷']:
+        i='贾琏'
+    d[i]=d.get(i,0)+1
+ls=list(d.items())
+ls.sort(key=lambda x:x[1],reverse=True)
+f=open("result.csv",'w')
+for i in ls:
+    if i[1]<40:
+        break
+    f.write("{},{}".format(i[0],i[1])+'\n')
+fi.close()
+fo.close()
+f.close()
+```
+
+
 
 ## 第十七套
 
-### 41
+### 43
+
+```python
+import random
+n=eval(input("请输入："))
+ls=[]
+random.seed(n)
+for i in range(26):
+    ls.append(chr(ord('a')+i))
+for i in range(10):
+    ls.append(chr(ord('0')+i))
+for i in range(10):
+    for j in range(8):
+        print(ls[random.randint(0,35)],end="")
+    print()
+```
+
+### 44
+
+```python
+import random
+import turtle
+random.seed(0)
+turtle.pensize(2)
+for i in range(3):
+    x0=random.randint(-100,100)
+    y0=random.randint(-100,100)
+    length=random.randint(20,80)
+    turtle.penup()
+    turtle.goto(x0,y0)
+    turtle.pendown()
+    for i in range(4):
+        turtle.fd(length)
+        turtle.seth(90*(1+i))
+turtle.done()
+```
+
+### 45 未做
 
 ```python
 
